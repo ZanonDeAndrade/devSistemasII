@@ -2,8 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
-import { EventScreen, AttendeesScreen } from '../screens';
-import { COLORS, EVENT_ID } from '../utils/constants';
+import { EventListScreen, EventScreen, AttendeesScreen } from '../screens';
+import { COLORS } from '../utils/constants';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -11,7 +11,7 @@ export const AppNavigator: React.FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Event"
+        initialRouteName="EventList"
         screenOptions={{
           headerStyle: {
             backgroundColor: COLORS.primary,
@@ -24,9 +24,16 @@ export const AppNavigator: React.FC = () => {
         }}
       >
         <Stack.Screen
+          name="EventList"
+          component={EventListScreen}
+          options={{
+            title: 'Eventos',
+            headerBackVisible: false,
+          }}
+        />
+        <Stack.Screen
           name="Event"
           component={EventScreen}
-          initialParams={{ eventId: EVENT_ID }}
           options={{
             title: 'Evento',
           }}

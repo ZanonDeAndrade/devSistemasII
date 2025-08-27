@@ -1,4 +1,5 @@
 export type RootStackParamList = {
+    EventList: undefined;
     Event: { eventId: string };
     Attendees: { eventId: string; eventTitle: string };
   };
